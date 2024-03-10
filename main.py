@@ -16,7 +16,7 @@ def sanitize(input_string):
     return sanitized_string
     
 def extract_raw(input_string):
-    content = re.search(r'<raw>(.*?)</raw>', input_string, re.DOTALL)
+    content = re.search(r'<pre>(.*?)</pre>', input_string, re.DOTALL)
     if content:
         content = content.group(1)
         content = content.strip()
@@ -51,7 +51,7 @@ async def note_editor(request: Request, note_name: str):
                 }
             )
     else:
-        if "<raw>" in content and "</raw>" in content:
+        if "<pre>" in content and "</pre>" in content:
             content = extract_raw(content)
         return Response(
             content, 
