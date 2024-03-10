@@ -16,10 +16,10 @@ def sanitize(input_string):
     return sanitized_string
     
 def extract_raw(input_string):
-    start_index = input_string.find("<pre>")
-    end_index = input_string.find("</pre>")
+    start_index = input_string.find("<code>")
+    end_index = input_string.find("</code>")
     if start_index != -1 and end_index != -1:
-        content = input_string[start_index + len("<pre>"):end_index]
+        content = input_string[start_index + len("<code>"):end_index]
         return content
     else:
         return None
@@ -51,7 +51,7 @@ async def note_editor(request: Request, note_name: str):
                 }
             )
     else:
-        if "<pre>" in content and "</pre>" in content:
+        if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
         return Response(
             content, 
@@ -68,13 +68,13 @@ async def render_note(request: Request, note_name: str):
         content = ""
     if "Mozilla" in user_agent:
         if "</" not in content:
-            content = "<pre>" + content + "</pre>"
+            content = "<code>" + content + "</code>"
         with open("btn.html", "r") as f:
             html = f.read()
         content = html.replace("{{content}}", content)
         return HTMLResponse(content)
     else:
-        if "<pre>" in content and "</pre>" in content:
+        if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
         return Response(
             content, 
