@@ -34,10 +34,10 @@
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
                                                                                                                             autofocus>{{ content }}</textarea>
     <script>
-        document.querySelector("#content").innerHTML = "{{ content }}";
         var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
         var note = document.title;
+        content.innerHTML = document.querySelector("#note").value;
         ws.onmessage = function(event) {
             value = event.data;
             content.innerHTML = value;
