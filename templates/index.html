@@ -32,7 +32,9 @@
                                                                                                                             autofocus>{{ content }}</textarea>
     <br>
     <div id="content">
-        {{ content }}
+        <div>
+            {{ content }}
+        </div>
     </div>
     <script>
         var ws = new WebSocket("{{ ws_url }}");
