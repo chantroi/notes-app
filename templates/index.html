@@ -31,7 +31,9 @@
 <body>
     <div id="content">
         <div>
-            {{ content }}
+            <script>
+                document.querySelector("#content").innerHTML("{{ content }}");
+            </script>
         </div>
     </div>
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
