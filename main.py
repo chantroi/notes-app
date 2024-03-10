@@ -14,6 +14,15 @@ def sanitize(input_string):
     sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)
     sanitized_string = sanitized_string.lstrip('_')
     return sanitized_string
+    
+def extract_raw(input_string):
+    content = re.search(r'<raw>(.*?)</raw>', input_string, re.DOTALL)
+    if content:
+        content = content.group(1)
+        content = content.strip()
+        return content
+    else:
+        return None
 
 @app.get("/")
 async def home():
@@ -42,6 +51,8 @@ async def note_editor(request: Request, note_name: str):
                 }
             )
     else:
+        if "<raw>" in content and "</raw>" in content:
+            content = extract_raw(content)
         return Response(
             content, 
             media_type="text/plain"
