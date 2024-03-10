@@ -47,7 +47,7 @@
         }
         function onInput(event) {
             const data = event.target.value;
-            const msg = `${note}:${data}`;
+            const msg = `${note}:::${data}`;
             ws.send(JSON.stringify(msg));
         }
     </script>
