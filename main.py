@@ -20,7 +20,6 @@ def extract_raw(input_string):
     end_index = input_string.find("</pre>")
     if start_index != -1 and end_index != -1:
         content = input_string[start_index + len("<pre>"):end_index]
-        content = content.strip()
         return content
     else:
         return None
