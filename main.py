@@ -46,9 +46,9 @@ async def write_note(ws: WebSocket):
     await ws.accept()
     while True:
         data = await ws.receive_text()
-        data = json.loads(data)
-        note_name = data.name
-        content = data.content
+        data = data.split(":=:")
+        note_name = data[0]
+        content = data[1]
         print(note_name)
         try:
             notes.add_note(note_name, content)
