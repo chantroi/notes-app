@@ -28,9 +28,9 @@ def extract_raw(input_string):
 @app.get("/")
 async def home():
     note_name = names.get_first_name(gender='female').lower()
-    return RedirectResponse("/{}".format(note_name))
+    return RedirectResponse("/{}/edit".format(note_name))
     
-@app.get("/{note_name}")
+@app.get("/{note_name}/edit")
 async def note_editor(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
     try:
@@ -51,6 +51,24 @@ async def note_editor(request: Request, note_name: str):
                 "ws_url": ws_url
                 }
             )
+    else:
+        if "<pre>" in content and "</pre>" in content:
+            content = extract_raw(content)
+        return Response(
+            content, 
+            media_type="text/plain"
+            )
+            
+@app.get("/{note_name}/edit")
+async def render_note(request: Request, note_name: str):
+    user_agent = request.headers.get("user-agent")
+    try:
+        content = notes.get_note(note_name)
+    except Exception as e:
+        print(e)
+        content = ""
+    if "Mozilla" in user_agent:
+        return content
     else:
         if "<pre>" in content and "</pre>" in content:
             content = extract_raw(content)
