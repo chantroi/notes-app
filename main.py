@@ -72,10 +72,7 @@ async def render_note(request: Request, note_name: str):
         if "</" in content:
             return HTMLResponse(content)
         else:
-            return Response(
-            content, 
-            media_type="text/plain"
-            )
+            return HTMLResponse(f"<pre>{content}</pre>")
     else:
         if "<pre>" in content and "</pre>" in content:
             content = extract_raw(content)
