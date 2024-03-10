@@ -10,7 +10,7 @@
         }
         
         .note {
-            height: 80%;
+            height: 100%;
             width: 100%;
             position: fixed;
             bottom: 0;
@@ -60,13 +60,13 @@
         var newPath = currentPath.replace("/edit", "");
     
         document.getElementById("viewButton").setAttribute("href", newPath);
-        content.innerHTML = document.querySelector("#note").value;
+        //content.innerHTML = document.querySelector("#note").value;
         function onInput(event) {
             const textinput = document.querySelector("#note");
             const data = textinput.value;
             const msg = note + ":=:" + data;
             ws.send(msg);
-            content.innerHTML = data;
+            //content.innerHTML = data;
         }
         
     </script>
