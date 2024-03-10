@@ -72,7 +72,8 @@ async def render_note(request: Request, note_name: str):
         else:
             content = content + "<style>    pre {display: none;}</pre>"
         with open("btn.html", "r") as f:
-            content = content + f.read()
+            html = f.read()
+        content = html.replace("{{content}}", content)
         return HTMLResponse(content)
     else:
         if "<pre>" in content and "</pre>" in content:
