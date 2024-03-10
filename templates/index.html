@@ -30,16 +30,11 @@
 
 <body>
     <div id="content">
-        <div>
-            <script>
-                const this = document.querySelector("#content");
-                this.innerHTML = "{{ content }}";
-            </script>
-        </div>
     </div>
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
                                                                                                                             autofocus>{{ content }}</textarea>
     <script>
+        document.querySelector("#content").innerHTML = "{{ content }}";
         var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
         var note = document.title;
