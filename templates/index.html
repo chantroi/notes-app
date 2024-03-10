@@ -38,15 +38,12 @@
         var content = document.querySelector("#content");
         var note = document.title;
         content.innerHTML = document.querySelector("#note").value;
-        ws.onmessage = function(event) {
-            value = event.data;
-            content.innerHTML = value;
-        }
         function onInput(event) {
             const textinput = document.querySelector("#note");
             const data = textinput.value;
             const msg = note + ":=:" + data;
             ws.send(msg);
+            content.innerHTML = data;
         }
     </script>
     
