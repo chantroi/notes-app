@@ -23,7 +23,7 @@ async def note_editor(request: Request, note_name: str):
         content = ""
     if "Mozilla" in user_agent:
         hostname = request.url.hostname
-        ws_url = "wss://{}/ws".format(hostname)
+        ws_url = "ws://{}/ws".format(hostname)
         return templates.TemplateResponse(
             request=request, 
             name="index.html", 
