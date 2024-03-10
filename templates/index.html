@@ -48,7 +48,7 @@
 </head>
 
 <body>
-    <a id="editButton" class="floating-button">edit</a>
+    <a id="viewButton" class="floating-button">View</a>
     <div id="content">
     </div>
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
@@ -60,7 +60,7 @@
         var currentPath = window.location.pathname;
         var newPath = currentPath.replace("/edit", "");
     
-        document.getElementById("editButton").setAttribute("href", newPath);
+        document.getElementById("viewButton").setAttribute("href", newPath);
         content.innerHTML = document.querySelector("#note").value;
         function onInput(event) {
             const textinput = document.querySelector("#note");
