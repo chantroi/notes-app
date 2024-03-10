@@ -59,7 +59,7 @@ async def note_editor(request: Request, note_name: str):
             media_type="text/plain"
             )
             
-@app.get("/{note_name}/edit")
+@app.get("/{note_name}")
 async def render_note(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
     try:
