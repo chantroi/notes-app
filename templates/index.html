@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        .note {
+            height: 50%;
+            width: 100%;
+            position: fixed;
+            top: 5px;
+        }
+        
+        #content {
+            height: 45%;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        
+        #NoteName {
+            position: fixed;
+        }
+    </style>
+    <title>{{ name }}</title>
+    
+</head>
+
+<body>
+    <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
+                                                                                                                            autofocus>{{ content }}</textarea>
+    <br>
+    <div id="content">
+        {{ content }}
+    </div>
+    <script>
+        var baseUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        var ws = new WebSocket(`${baseUrl}/ws`);
+        var content = document.querySelector("#content");
+        var note = document.title;
+        ws.onmessage = function (event) {
+            value = event.data;
+            content.innerHTML = value;
+        }
+        function onInput(event) {
+            const data = event.target.value;
+            const msg = {
+                key: note,
+                value: data
+            };
+            ws.send(JSON.stringify(msg));
+        }
+    </script>
+    
+</body>
+
+</html>
