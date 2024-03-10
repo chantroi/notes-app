@@ -93,4 +93,4 @@ async def write_note(ws: WebSocket):
         except Exception as e:
             print(e)
             notes.update_note(note_name, content)
-        await ws.send_text(content)
+        #await ws.send_text(content)
