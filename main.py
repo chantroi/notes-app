@@ -68,7 +68,7 @@ async def render_note(request: Request, note_name: str):
         content = ""
     if "Mozilla" in user_agent:
         if "</" not in content:
-            content = "<code>" + content + "</code>"
+            content = "<pre><code>" + content + "</code></pre>"
         with open("btn.html", "r") as f:
             html = f.read()
         content = html.replace("{{content}}", content)
