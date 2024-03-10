@@ -29,14 +29,13 @@
 </head>
 
 <body>
-    <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
-                                                                                                                            autofocus>{{ content }}</textarea>
-    <br>
     <div id="content">
         <div>
-            {{ content }}
+            {{ html }}
         </div>
     </div>
+    <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
+                                                                                                                            autofocus>{{ content }}</textarea>
     <script>
         var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
