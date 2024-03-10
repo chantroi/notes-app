@@ -4,10 +4,16 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from data import Note
 import names
 import json
+import re
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 notes = Note()
+
+def sanitize(input_string):
+    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)
+    sanitized_string = sanitized_string.lstrip('_')
+    return sanitized_string
 
 @app.get("/")
 async def home():
@@ -47,7 +53,7 @@ async def write_note(ws: WebSocket):
     while True:
         data = await ws.receive_text()
         data = data.split(":=:")
-        note_name = data[0]
+        note_name = sanitize(data[0])
         content = data[1]
         print(note_name)
         try:
