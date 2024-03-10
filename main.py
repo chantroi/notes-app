@@ -3,6 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from data import Note
 import names
+import json
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -44,7 +45,8 @@ async def note_editor(request: Request, note_name: str):
 async def write_note(ws: WebSocket):
     await ws.accept()
     while True:
-        data = await ws.receive_json()
+        data = await ws.receive_text()
+        data = json.loads(data)
         note_name = data.name
         content = data.content
         print(note_name)
