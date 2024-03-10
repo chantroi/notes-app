@@ -24,7 +24,22 @@
             overflow: auto;
         }
         
-        #NoteName {
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff8406;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
             position: fixed;
         }
     </style>
@@ -33,6 +48,7 @@
 </head>
 
 <body>
+    <a id="editButton" class="floating-button">edit</a>
     <div id="content">
     </div>
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
@@ -41,6 +57,10 @@
         var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
         var note = document.title;
+        var currentPath = window.location.pathname;
+        var newPath = currentPath.replace("/edit", "");
+    
+        document.getElementById("editButton").setAttribute("href", newPath);
         content.innerHTML = document.querySelector("#note").value;
         function onInput(event) {
             const textinput = document.querySelector("#note");
@@ -49,6 +69,7 @@
             ws.send(msg);
             content.innerHTML = data;
         }
+        
     </script>
     
 </body>
