@@ -1,4 +1,4 @@
-from fastapi import FastAPI, WebSocket, Request
+from fastapi import FastAPI, WebSocket, Request, Response
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from data import Note
@@ -15,15 +15,22 @@ async def home():
     
 @app.get("/{note_name}")
 async def note_editor(request: Request, note_name: str):
+    user_agent = request.headers.get("user-agent")
     content = notes.get_note(note_name)
-    return templates.TemplateResponse(
-        request=request, 
-        name="index.html", 
-        context={
-            "name": note_name,
-            "content": content
-        }
-    )
+    if "Mozilla" in user_agent:
+        return templates.TemplateResponse(
+            request=request, 
+            name="index.html", 
+            context={
+                "name": note_name,
+                "content": content
+                }
+            )
+    else:
+        return Response(
+            content, 
+            media_type="text/plain"
+            )
     
 @app.websocket("/ws")
 async def write_note(ws: WebSocket):
