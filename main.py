@@ -67,10 +67,10 @@ async def render_note(request: Request, note_name: str):
         print(e)
         content = ""
     if "Mozilla" in user_agent:
-        with open("btn.html", "r") as f:
-            content = content + f.read()
         if "</" not in content:
             content = "<pre>" + content + "</pre>"
+        with open("btn.html", "r") as f:
+            content = content + f.read()
         return HTMLResponse(content)
     else:
         if "<pre>" in content and "</pre>" in content:
