@@ -28,7 +28,6 @@ async def note_editor(request: Request, note_name: str):
     except Exception as e:
         print(e)
         content = ""
-    html = content.replace("\n", "<br>")
     if "Mozilla" in user_agent:
         hostname = request.url.hostname
         ws_url = "wss://{}/ws".format(hostname)
@@ -39,7 +38,6 @@ async def note_editor(request: Request, note_name: str):
             context={
                 "name": note_name,
                 "content": content,
-                "html": html,
                 "ws_url": ws_url
                 }
             )
