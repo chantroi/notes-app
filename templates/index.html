@@ -25,15 +25,16 @@
         }
     </style>
     <title>{{ name }}</title>
-    <script>
-    function show(event) {
-        document.querySelector("#content").innerHTML("<div>{{ content }}</div>");
-    }
-    </script>
+    
 </head>
 
-<body onload="show()">
+<body>
     <div id="content">
+        <div>
+            <script>
+                document.querySelector("#content").innerHTML = "{{ content }}";
+            </script>
+        </div>
     </div>
     <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
                                                                                                                             autofocus>{{ content }}</textarea>
