@@ -48,8 +48,8 @@
         function onInput(event) {
             const textinput = document.querySelector("#note");
             const data = textinput.value;
-            const msg = `${note}:=:${data}`;
-            ws.send(JSON.stringify(msg));
+            const msg = note + ":=:" + data;
+            ws.send(msg);
         }
     </script>
     
