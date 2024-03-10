@@ -46,6 +46,7 @@ async def write_note(ws: WebSocket):
         data = await ws.receive_json()
         note_name = data.name
         content = data.content
+        print(note_name)
         try:
             notes.add_note(note_name, content)
         except Exception as e:
