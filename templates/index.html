@@ -35,8 +35,7 @@
         {{ content }}
     </div>
     <script>
-        var baseUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-        var ws = new WebSocket(`${baseUrl}/ws`);
+        var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
         var note = document.title;
         ws.onmessage = function (event) {
