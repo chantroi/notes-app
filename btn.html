@@ -1,32 +1,43 @@
-<style>
-    pre {
-        white-space: pre-wrap;
-    }
-    
-    .floating-button {
-        position: fixed;
-        top: 60px;
-        right: 60px;
-        background-color: #ff2323;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        text-align: center;
-        line-height: 60px;
-        cursor: pointer;
-        z-index: 1000;
-        text-decoration: none;
-    }
-</style>
-<a id="editButton" class="floating-button">Edit</a>
+<!DOCTYPE html>
+<html>
 
-<script>
-    var currentPath = window.location.pathname;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+        
+        .floating-button {
+            position: fixed;
+            top: 60px;
+            right: 60px;
+            background-color: #ff2323;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+        }
+    </style>
+    
+<body>
+    <a id="editButton" class="floating-button">Edit</a>
+    {{content}}
+    <script>
+        var currentPath = window.location.pathname;
     
     var newPath = currentPath + "/edit";
     
     document.getElementById("editButton").setAttribute("href", newPath);
-</script>
+    </script>
+</body>
+
+</html>
