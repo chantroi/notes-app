@@ -32,7 +32,8 @@
     <div id="content">
         <div>
             <script>
-                document.querySelector("#content").innerHTML = "{{ content }}";
+                const this = document.querySelector("#content");
+                this.innerHTML = "{{ content }}";
             </script>
         </div>
     </div>
