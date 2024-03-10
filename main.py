@@ -18,12 +18,15 @@ async def note_editor(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
     content = notes.get_note(note_name)
     if "Mozilla" in user_agent:
+        hostname = request.url.hostname
+        ws_url = "wss://{}/ws".format(hostname)
         return templates.TemplateResponse(
             request=request, 
             name="index.html", 
             context={
                 "name": note_name,
-                "content": content
+                "content": content,
+                "ws_url": ws_url
                 }
             )
     else:
