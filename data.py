@@ -8,7 +8,7 @@ class Note:
         (client
           .set_endpoint('https://cloud.appwrite.io/v1')
           .set_project(os.getenv('PROJECT_ID'))
-          .set_key(os.getenv("APPWRITE_API_ID"))
+          .set_key(os.getenv("API_ID"))
         )
         self.db = Databases(client)
 
