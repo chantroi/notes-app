@@ -16,7 +16,11 @@ async def home():
 @app.get("/{note_name}")
 async def note_editor(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
-    content = notes.get_note(note_name)
+    try:
+        content = notes.get_note(note_name)
+    except Exception as e:
+        print(e)
+        content = ""
     if "Mozilla" in user_agent:
         hostname = request.url.hostname
         ws_url = "wss://{}/ws".format(hostname)
