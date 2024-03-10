@@ -46,7 +46,8 @@
             content.innerHTML = value;
         }
         function onInput(event) {
-            const data = event.target.value;
+            const textinput = document.querySelector("#note");
+            const data = textinput.value;
             const msg = `${note}:=:${data}`;
             ws.send(JSON.stringify(msg));
         }
