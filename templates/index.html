@@ -41,7 +41,7 @@
         var ws = new WebSocket("{{ ws_url }}");
         var content = document.querySelector("#content");
         var note = document.title;
-        ws.onmessage = function (event) {
+        ws.onmessage = function(event) {
             value = event.data;
             content.innerHTML = value;
         }
