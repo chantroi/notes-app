@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+                                                                                                                            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        .note {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            bottom: 5px;
+            top: 5px;
+            left: 5px;
+            right: 3px;
+        }
+        
+        #content {
+            height: 20%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            overflow: auto;
+        }
+        
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+        }
+    </style>
+    <title>{{ name }}</title>
+    
+</head>
+
+<body>
+    <a id="viewButton" class="floating-button">View</a>
+    <div id="content">
+    </div>
+    <textarea class="note" id="note" placeholder="Input..." spellcheck="false" autocomplete="off" oninput="onInput()"
+                                                                                                                            autofocus>{{ content }}</textarea>
+    <script>
+        var content = document.querySelector("#content");
+        var note = document.title;
+        var currentPath = window.location.pathname;
+        var newPath = currentPath.replace("/edit", "");
+    
+        document.getElementById("viewButton").setAttribute("href", newPath);
+        function onInput(event) {
+            const textinput = document.querySelector("#note");
+            const data = textinput.value;
+            const msg = {
+                name: note,
+                content: data
+            }
+            fetch("{{ url }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(msg),
+            });
+        }
+        
+    </script>
+    
+</body>
+
+</html>
