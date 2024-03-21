@@ -35,9 +35,12 @@ def edit_note(name):
         print(e)
         content = ""
     if "Mozilla" in user_agent:
+        host = request.host
+        url = "https://" + host + "/edit"
         return render_template(
             'flask.html', 
-            content=content
+            content=content,
+            url=url
             )
     else:
         if "<code>" in content and "</code>" in content:
