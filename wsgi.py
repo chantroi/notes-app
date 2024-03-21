@@ -39,6 +39,7 @@ def edit_note(name):
         url = "https://" + host + "/edit"
         return render_template(
             'flask.html', 
+            name=name,
             content=content,
             url=url
             )
@@ -86,3 +87,4 @@ def post_edit():
     except Exception as e:
         print(e)
         notes.update_note(name, content)
+    return "OK"
