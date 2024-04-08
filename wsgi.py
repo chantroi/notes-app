@@ -35,32 +35,6 @@ def edit_note(name):
         print(e)
         content = ""
     if "Mozilla" in user_agent:
-        code = request.args.get("code")
-        auth = notes.get_auth(name)
-        if auth != "public" and not code:
-            return """
-            <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const code = prompt("Note này đã bị khoá sửa đổi. Vui lòng nhập mật khẩu:");
-    
-    if (code !== null && code.trim() !== '') {
-      window.location.href = `${window.location.href}?code=${code.trim()}`;
-        }
-    });
-            </script>
-            """
-        if code != auth:
-            return """
-            <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const code = prompt("Mật khẩu không đúng. Vui lòng nhập lại:");
-    
-    if (code !== null && code.trim() !== '') {
-      window.location.href = `${window.location.href}?code=${code.trim()}`;
-        }
-    });
-            </script>
-            """
         host = request.host
         url = "https://" + host + "/edit"
         return render_template(
@@ -108,9 +82,6 @@ def post_edit():
     data = request.json
     name = data.get('name')
     content = data.get('content')
-    code = data.get('code')
-    if not code:
-        code = "public"
     try:
         notes.add_note(name, content)
     except Exception as e:
