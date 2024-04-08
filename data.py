@@ -12,14 +12,18 @@ class Note:
         )
         self.db = Databases(client)
 
-    def add_note(self, key, data):
-        result = self.db.create_document('notes', 'notes', key, {'value': data})
+    def add_note(self, key, data, auth):
+        result = self.db.create_document('notes', 'notes', key, {'value': data, 'auth': auth})
         return result['value']
         
     def get_note(self, key):
         result = self.db.get_document('notes', 'notes', key)
         return result['value']
         
-    def update_note(self, key, data):
-        result = self.db.update_document('notes', 'notes', key, {'value': data})
+    def get_auth(self, key):
+        result = self.db.get_document('notes', 'notes', key)
+        return result['auth']
+        
+    def update_note(self, key, data, auth):
+        result = self.db.update_document('notes', 'notes', key, {'value': data, 'auth': auth})
         return result['value']
