@@ -55,7 +55,7 @@
             var content = document.querySelector("#content");
             var note = document.title;
             var currentPath = window.location.pathname;
-            var newPath = currentPath.replace("/edit", "");
+            var newPath = currentPath.replace("?edit=true", "");
 
             document.getElementById("viewButton").setAttribute("href", newPath);
             function onInput(event) {

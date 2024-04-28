@@ -43,11 +43,11 @@
 
     <body>
         <a id="editButton" class="floating-button">Edit</a>
-        {{content}}
+        {{ content }}
         <script>
             var currentPath = window.location.pathname;
 
-            var newPath = currentPath + "/edit";
+            var newPath = currentPath + "?edit=true";
 
             document.getElementById("editButton").setAttribute("href", newPath);
         </script>

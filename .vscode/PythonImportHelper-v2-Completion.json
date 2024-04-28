@@ -222,7 +222,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]\n        return content",
+        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -231,7 +231,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]\n        return content\n    else:\n        return None\n@app.route('/')\ndef home():",
+        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content\n    else:\n        return None\n@app.route(\"/\")\ndef home():",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -240,16 +240,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender='female').lower()\n    return redirect(\"/{}/edit\".format(note_name))\n@app.route('/<name>/edit')\ndef edit_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "edit_note",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def edit_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        host = request.host\n        url = \"https://\" + host + \"/edit\"",
+        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}?edit=true\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -258,7 +249,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        if \"</\" not in content:\n            content = \"<pre><code>\" + content + \"</code></pre>\"",
+        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        if request.args.get(\"edit\"):\n            host = request.host",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -267,7 +258,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get('name')\n    content = data.get('content')\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return \"OK\"",
+        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get(\"name\")\n    content = data.get(\"content\")\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return \"OK\"",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -276,7 +267,7 @@
         "kind": 5,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "app = Flask(__name__)\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
+        "peekOfCode": "app = Flask(__name__)\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -285,7 +276,7 @@
         "kind": 5,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]",
+        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]",
         "detail": "wsgi",
         "documentation": {}
     }
