@@ -43,7 +43,7 @@
 
     <body>
         <a id="editButton" class="floating-button">Edit</a>
-        <div>{{ content }}</div>
+        <div>{{ content | safe }}</div>
         <script>
             var currentPath = window.location.pathname;
 
