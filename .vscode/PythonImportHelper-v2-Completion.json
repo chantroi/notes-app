@@ -124,6 +124,70 @@
         "documentation": {}
     },
     {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -215,6 +279,33 @@
         "description": "data",
         "peekOfCode": "class Note:\n    def __init__(self):\n        client = Client()\n        (client\n          .set_endpoint('https://cloud.appwrite.io/v1')\n          .set_project(os.getenv('PROJECT_ID'))\n          .set_key(os.getenv(\"API_ID\"))\n        )\n        self.db = Databases(client)\n    def add_note(self, key, data):",
         "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "NoteBase",
+        "kind": 6,
+        "importPath": "mysql",
+        "description": "mysql",
+        "peekOfCode": "class NoteBase(Base):\n    __tablename__ = 'notedb'\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(),\n                        onupdate=func.now())\nclass Database:\n    def __init__(self) -> None:",
+        "detail": "mysql",
+        "documentation": {}
+    },
+    {
+        "label": "Database",
+        "kind": 6,
+        "importPath": "mysql",
+        "description": "mysql",
+        "peekOfCode": "class Database:\n    def __init__(self) -> None:\n        db_url = os.getenv('MYSQL')\n        engine = create_engine(db_url, echo=True)\n        Base.metadata.create_all(engine)\n        Session = sessionmaker(bind=engine)\n        self.session = Session()\n    def add(self, name: str, content: str, author: str = None) -> NoteBase:\n        record = NoteBase(name=name, content=content, author=author)\n        self.session.add(record)",
+        "detail": "mysql",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "mysql",
+        "description": "mysql",
+        "peekOfCode": "Base = declarative_base()\nclass NoteBase(Base):\n    __tablename__ = 'notedb'\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(),\n                        onupdate=func.now())\nclass Database:",
+        "detail": "mysql",
         "documentation": {}
     },
     {
