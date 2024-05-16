@@ -47,8 +47,15 @@ def render_note(name):
         return render_template("htmx/edit.html", content=content)
     if "Mozilla" in user_agent:
         host = request.host
-        url = "https://" + host + "/edit"
-        return render_template("index.html", name=name, content=content, url=url)
+        post_url = "https://" + host + "/edit"
+        self_url = request.url
+        return render_template(
+            "index.html",
+            name=name,
+            content=content,
+            post_url=post_url,
+            self_url=self_url,
+        )
     else:
         if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
