@@ -25,12 +25,30 @@
         "documentation": {}
     },
     {
-        "label": "fastapi",
+        "label": "json",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "detail": "fastapi",
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "names",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "names",
+        "description": "names",
+        "detail": "names",
         "documentation": {}
     },
     {
@@ -79,33 +97,6 @@
         "description": "data",
         "isExtraImport": true,
         "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "names",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "names",
-        "description": "names",
-        "detail": "names",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {

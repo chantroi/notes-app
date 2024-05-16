@@ -1,9 +1,8 @@
-import fastapi
-from flask import Flask, render_template, redirect, request, Response
-from data import Note
-import names
 import json
 import re
+import names
+from flask import Flask, render_template, redirect, request, Response
+from data import Note
 
 app = Flask(__name__)
 notes = Note()
