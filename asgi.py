@@ -3,32 +3,35 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from data import Note
 import names
-import json
 import re
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 notes = Note()
 
+
 def sanitize(input_string):
-    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)
-    sanitized_string = sanitized_string.lstrip('_')
+    sanitized_string = re.sub(r"[^a-zA-Z0-9_]", "", input_string)
+    sanitized_string = sanitized_string.lstrip("_")
     return sanitized_string
-    
+
+
 def extract_raw(input_string):
     start_index = input_string.find("<code>")
     end_index = input_string.find("</code>")
     if start_index != -1 and end_index != -1:
-        content = input_string[start_index + len("<code>"):end_index]
+        content = input_string[start_index + len("<code>") : end_index]
         return content
     else:
         return None
 
+
 @app.get("/")
 async def home():
-    note_name = names.get_first_name(gender='female').lower()
+    note_name = names.get_first_name(gender="female").lower()
     return RedirectResponse("/{}/edit".format(note_name))
-    
+
+
 @app.get("/{note_name}/edit")
 async def note_editor(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
@@ -42,22 +45,16 @@ async def note_editor(request: Request, note_name: str):
         ws_url = "wss://{}/ws".format(hostname)
         print(ws_url)
         return templates.TemplateResponse(
-            request=request, 
-            name="ws.html", 
-            context={
-                "name": note_name,
-                "content": content,
-                "ws_url": ws_url
-                }
-            )
+            request=request,
+            name="ws.html",
+            context={"name": note_name, "content": content, "ws_url": ws_url},
+        )
     else:
         if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
-        return Response(
-            content, 
-            media_type="text/plain"
-            )
-            
+        return Response(content, media_type="text/plain")
+
+
 @app.get("/{note_name}")
 async def render_note(request: Request, note_name: str):
     user_agent = request.headers.get("user-agent")
@@ -76,11 +73,9 @@ async def render_note(request: Request, note_name: str):
     else:
         if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
-        return Response(
-            content, 
-            media_type="text/plain"
-            )
-    
+        return Response(content, media_type="text/plain")
+
+
 @app.websocket("/ws")
 async def write_note(ws: WebSocket):
     await ws.accept()
@@ -95,4 +90,4 @@ async def write_note(ws: WebSocket):
         except Exception as e:
             print(e)
             notes.update_note(note_name, content)
-        #await ws.send_text(content)
+        # await ws.send_text(content)

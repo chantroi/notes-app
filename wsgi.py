@@ -1,3 +1,4 @@
+import fastapi
 from flask import Flask, render_template, redirect, request, Response
 from data import Note
 import names
@@ -27,7 +28,8 @@ def extract_raw(input_string):
 @app.route("/")
 def home():
     note_name = names.get_first_name(gender="female").lower()
-    return redirect("/{}?edit=true".format(note_name))
+    return redirect("/{}".format(note_name))
+
 
 @app.route("/<name>")
 def render_note(name):
@@ -38,13 +40,9 @@ def render_note(name):
         print(e)
         content = ""
     if "Mozilla" in user_agent:
-        if request.args.get("edit"):
-            host = request.host
-            url = "https://" + host + "/edit"
-            return render_template("edit.html", name=name, content=content, url=url)
-        if "</" not in content:
-            content = "<pre><code>" + content + "</code></pre>"
-        return render_template("view.html", content=content)
+        host = request.host
+        url = "https://" + host + "/edit"
+        return render_template("index.html", name=name, content=content, url=url)
     else:
         if "<code>" in content and "</code>" in content:
             content = extract_raw(content)
@@ -61,4 +59,4 @@ def post_edit():
     except Exception as e:
         print(e)
         notes.update_note(name, content)
-    return "OK"
+    return Response(content, content_type="text/plain")

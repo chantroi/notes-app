@@ -1,5 +1,14 @@
 [
     {
+        "label": "fastapi",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -78,15 +87,6 @@
         "importPath": "names",
         "description": "names",
         "detail": "names",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
         "documentation": {}
     },
     {
@@ -228,11 +228,20 @@
         "documentation": {}
     },
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "sanitize",
         "kind": 2,
         "importPath": "asgi",
         "description": "asgi",
-        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]\n        return content",
+        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content",
         "detail": "asgi",
         "documentation": {}
     },
@@ -241,7 +250,7 @@
         "kind": 2,
         "importPath": "asgi",
         "description": "asgi",
-        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]\n        return content\n    else:\n        return None\n@app.get(\"/\")\nasync def home():",
+        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content\n    else:\n        return None\n@app.get(\"/\")\nasync def home():",
         "detail": "asgi",
         "documentation": {}
     },
@@ -250,7 +259,7 @@
         "kind": 5,
         "importPath": "asgi",
         "description": "asgi",
-        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")",
+        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")",
         "detail": "asgi",
         "documentation": {}
     },
@@ -259,7 +268,7 @@
         "kind": 5,
         "importPath": "asgi",
         "description": "asgi",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
         "detail": "asgi",
         "documentation": {}
     },
@@ -268,7 +277,7 @@
         "kind": 5,
         "importPath": "asgi",
         "description": "asgi",
-        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r'[^a-zA-Z0-9_]', '', input_string)\n    sanitized_string = sanitized_string.lstrip('_')\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\"):end_index]",
+        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]",
         "detail": "asgi",
         "documentation": {}
     },
@@ -286,7 +295,7 @@
         "kind": 6,
         "importPath": "mysql",
         "description": "mysql",
-        "peekOfCode": "class NoteBase(Base):\n    __tablename__ = 'notedb'\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(),\n                        onupdate=func.now())\nclass Database:\n    def __init__(self) -> None:",
+        "peekOfCode": "class NoteBase(Base):\n    __tablename__ = \"notedb\"\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())\nclass Database:\n    def __init__(self) -> None:\n        db_url = os.getenv(\"MYSQL\")",
         "detail": "mysql",
         "documentation": {}
     },
@@ -295,7 +304,7 @@
         "kind": 6,
         "importPath": "mysql",
         "description": "mysql",
-        "peekOfCode": "class Database:\n    def __init__(self) -> None:\n        db_url = os.getenv('MYSQL')\n        engine = create_engine(db_url, echo=True)\n        Base.metadata.create_all(engine)\n        Session = sessionmaker(bind=engine)\n        self.session = Session()\n    def add(self, name: str, content: str, author: str = None) -> NoteBase:\n        record = NoteBase(name=name, content=content, author=author)\n        self.session.add(record)",
+        "peekOfCode": "class Database:\n    def __init__(self) -> None:\n        db_url = os.getenv(\"MYSQL\")\n        engine = create_engine(db_url, echo=True)\n        Base.metadata.create_all(engine)\n        Session = sessionmaker(bind=engine)\n        self.session = Session()\n    def add(self, name: str, content: str, author: str = None) -> NoteBase:\n        record = NoteBase(name=name, content=content, author=author)\n        self.session.add(record)",
         "detail": "mysql",
         "documentation": {}
     },
@@ -304,7 +313,7 @@
         "kind": 5,
         "importPath": "mysql",
         "description": "mysql",
-        "peekOfCode": "Base = declarative_base()\nclass NoteBase(Base):\n    __tablename__ = 'notedb'\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(),\n                        onupdate=func.now())\nclass Database:",
+        "peekOfCode": "Base = declarative_base()\nclass NoteBase(Base):\n    __tablename__ = \"notedb\"\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())\nclass Database:\n    def __init__(self) -> None:",
         "detail": "mysql",
         "documentation": {}
     },
@@ -331,7 +340,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}?edit=true\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
+        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -340,7 +349,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        if request.args.get(\"edit\"):\n            host = request.host",
+        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        host = request.host\n        url = \"https://\" + host + \"/edit\"",
         "detail": "wsgi",
         "documentation": {}
     },
@@ -349,7 +358,7 @@
         "kind": 2,
         "importPath": "wsgi",
         "description": "wsgi",
-        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get(\"name\")\n    content = data.get(\"content\")\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return \"OK\"",
+        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get(\"name\")\n    content = data.get(\"content\")\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return Response(content, content_type=\"text/plain\")",
         "detail": "wsgi",
         "documentation": {}
     },

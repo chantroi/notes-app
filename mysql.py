@@ -8,18 +8,17 @@ Base = declarative_base()
 
 
 class NoteBase(Base):
-    __tablename__ = 'notedb'
+    __tablename__ = "notedb"
     name = Column(String, primary_key=True)
     content = Column(String)
     author = Column(String, nullable=True)
     created_at = Column(DateTime, server_default=func.now())
-    updated_at = Column(DateTime, server_default=func.now(),
-                        onupdate=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 
 class Database:
     def __init__(self) -> None:
-        db_url = os.getenv('MYSQL')
+        db_url = os.getenv("MYSQL")
         engine = create_engine(db_url, echo=True)
         Base.metadata.create_all(engine)
         Session = sessionmaker(bind=engine)
@@ -32,8 +31,7 @@ class Database:
         return record
 
     def delete(self, name: str) -> Union[NoteBase | None]:
-        record_to_delete = self.session.query(
-            NoteBase).filter_by(name=name).first()
+        record_to_delete = self.session.query(NoteBase).filter_by(name=name).first()
         if record_to_delete:
             self.session.delete(record_to_delete)
             self.session.commit()
