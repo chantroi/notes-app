@@ -1,1 +1,1 @@
-python -m uvicorn asgi:app --host 0.0.0.0 --port 10808 --reload
+python -m gunicorn -b 0.0.0.0:8080 main:app

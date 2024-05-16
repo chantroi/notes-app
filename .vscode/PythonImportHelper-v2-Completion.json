@@ -1,104 +1,5 @@
 [
     {
-        "label": "fastapi",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "WebSocket",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Request",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Jinja2Templates",
-        "importPath": "fastapi.templating",
-        "description": "fastapi.templating",
-        "isExtraImport": true,
-        "detail": "fastapi.templating",
-        "documentation": {}
-    },
-    {
-        "label": "HTMLResponse",
-        "importPath": "fastapi.responses",
-        "description": "fastapi.responses",
-        "isExtraImport": true,
-        "detail": "fastapi.responses",
-        "documentation": {}
-    },
-    {
-        "label": "RedirectResponse",
-        "importPath": "fastapi.responses",
-        "description": "fastapi.responses",
-        "isExtraImport": true,
-        "detail": "fastapi.responses",
-        "documentation": {}
-    },
-    {
-        "label": "Note",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "Note",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "names",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "names",
-        "description": "names",
-        "detail": "names",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "Client",
         "importPath": "appwrite.client",
         "description": "appwrite.client",
@@ -121,6 +22,90 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Note",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "names",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "names",
+        "description": "names",
+        "detail": "names",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -188,106 +173,75 @@
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "sanitize",
-        "kind": 2,
-        "importPath": "asgi",
-        "description": "asgi",
-        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content",
-        "detail": "asgi",
-        "documentation": {}
-    },
-    {
-        "label": "extract_raw",
-        "kind": 2,
-        "importPath": "asgi",
-        "description": "asgi",
-        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content\n    else:\n        return None\n@app.get(\"/\")\nasync def home():",
-        "detail": "asgi",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "asgi",
-        "description": "asgi",
-        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")",
-        "detail": "asgi",
-        "documentation": {}
-    },
-    {
-        "label": "templates",
-        "kind": 5,
-        "importPath": "asgi",
-        "description": "asgi",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
-        "detail": "asgi",
-        "documentation": {}
-    },
-    {
-        "label": "notes",
-        "kind": 5,
-        "importPath": "asgi",
-        "description": "asgi",
-        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]",
-        "detail": "asgi",
-        "documentation": {}
-    },
-    {
         "label": "Note",
         "kind": 6,
         "importPath": "data",
         "description": "data",
         "peekOfCode": "class Note:\n    def __init__(self):\n        client = Client()\n        (client\n          .set_endpoint('https://cloud.appwrite.io/v1')\n          .set_project(os.getenv('PROJECT_ID'))\n          .set_key(os.getenv(\"API_ID\"))\n        )\n        self.db = Databases(client)\n    def add_note(self, key, data):",
         "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "sanitize",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "extract_raw",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content\n    else:\n        return None\n@app.route(\"/\")\ndef home():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "render_note",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        host = request.host\n        url = \"https://\" + host + \"/edit\"",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "post_edit",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get(\"name\")\n    content = data.get(\"content\")\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return Response(content, content_type=\"text/plain\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = Flask(__name__)\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "notes",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]",
+        "detail": "main",
         "documentation": {}
     },
     {
@@ -315,69 +269,6 @@
         "description": "mysql",
         "peekOfCode": "Base = declarative_base()\nclass NoteBase(Base):\n    __tablename__ = \"notedb\"\n    name = Column(String, primary_key=True)\n    content = Column(String)\n    author = Column(String, nullable=True)\n    created_at = Column(DateTime, server_default=func.now())\n    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())\nclass Database:\n    def __init__(self) -> None:",
         "detail": "mysql",
-        "documentation": {}
-    },
-    {
-        "label": "sanitize",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "extract_raw",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]\n        return content\n    else:\n        return None\n@app.route(\"/\")\ndef home():",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "home",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "render_note",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        host = request.host\n        url = \"https://\" + host + \"/edit\"",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "post_edit",
-        "kind": 2,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "def post_edit():\n    data = request.json\n    name = data.get(\"name\")\n    content = data.get(\"content\")\n    try:\n        notes.add_note(name, content)\n    except Exception as e:\n        print(e)\n        notes.update_note(name, content)\n    return Response(content, content_type=\"text/plain\")",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "app = Flask(__name__)\nnotes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:",
-        "detail": "wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "notes",
-        "kind": 5,
-        "importPath": "wsgi",
-        "description": "wsgi",
-        "peekOfCode": "notes = Note()\ndef sanitize(input_string):\n    sanitized_string = re.sub(r\"[^a-zA-Z0-9_]\", \"\", input_string)\n    sanitized_string = sanitized_string.lstrip(\"_\")\n    return sanitized_string\ndef extract_raw(input_string):\n    start_index = input_string.find(\"<code>\")\n    end_index = input_string.find(\"</code>\")\n    if start_index != -1 and end_index != -1:\n        content = input_string[start_index + len(\"<code>\") : end_index]",
-        "detail": "wsgi",
         "documentation": {}
     }
 ]
