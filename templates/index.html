@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script src="https://unpkg.com/htmx.org@1.9.12"
-        integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
-        crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script src="/static/script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
     <script>
-        hljs.highlightAll();
+      hljs.highlightAll();
     </script>
     <title>{{ name }}</title>
-
-<body onload="loadContent()">
-    <div id="container">
-    </div>
+  </head>
+  <body onload="loadContent()">
+    <div id="container"></div>
     <script>
-        const note = document.title;
+      const note = document.title;
 
-        function loadContent() {
-            htmx.ajax("GET", "{{ self_url }}?mode=view", "#container");
-        }
-        function loadEditor() {
-            htmx.ajax("GET", "{{ self_url }}?mode=edit", "#container");
-        }
+      function loadContent() {
+        htmx.ajax("GET", "{{ self_url }}?mode=view", "#container");
+      }
+      function loadEditor() {
+        htmx.ajax("GET", "{{ self_url }}?mode=edit", "#container");
+      }
 
-        function onInput(event) {
-            const textinput = document.querySelector("#note");
-            const data = textinput.value;
+      function onInput(event) {
+        const textinput = document.querySelector("#note");
+        const data = textinput.value;
 
-            const msg = {
-                name: note,
-                content: data,
-            };
+        const msg = {
+          name: note,
+          content: data,
+        };
 
-            fetch("{{ post_url }}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(msg),
-            })
-                .then(response => response.text)
-                .then(data => content = data);
-        }
+        fetch("{{ post_url }}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(msg),
+        })
+          .then((response) => response.text)
+          .then((data) => (content = data));
+      }
     </script>
-</body>
-
+  </body>
 </html>
