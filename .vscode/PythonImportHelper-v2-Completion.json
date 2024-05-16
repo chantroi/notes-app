@@ -195,7 +195,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)",
+        "peekOfCode": "def home():\n    note_name = names.get_first_name(gender=\"female\").lower()\n    return redirect(\"/{}\".format(note_name))\n@app.route(\"/<name>\")\ndef render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    mode = request.args.get(\"mode\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:",
         "detail": "main",
         "documentation": {}
     },
@@ -204,7 +204,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if \"Mozilla\" in user_agent:\n        host = request.host\n        url = \"https://\" + host + \"/edit\"",
+        "peekOfCode": "def render_note(name):\n    user_agent = request.headers.get(\"user-agent\")\n    mode = request.args.get(\"mode\")\n    try:\n        content = notes.get_note(name)\n    except Exception as e:\n        print(e)\n        content = \"\"\n    if mode == \"view\":\n        if \"<code>\" not in content:",
         "detail": "main",
         "documentation": {}
     },

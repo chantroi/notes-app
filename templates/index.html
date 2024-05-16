@@ -16,7 +16,6 @@
         hljs.highlightAll();
     </script>
     <title>{{ name }}</title>
-    <template id="hidden">{{ content }}</template>
 
 <body onload="loadContent()">
     <div id="container">
@@ -26,17 +25,10 @@
         const note = document.title;
 
         function loadContent() {
-            htmx.ajax("GET", "/static/htmx/view.html", "#container");
-            if (!content.includes('<code>')) {
-                content = '<pre><code>' + content + '</code></pre>';
-            }
-            const contentDiv = document.querySelector("#content-div");
-            contentDiv.innerHTML = content;
+            htmx.ajax("GET", "{{ self_url }}?mode=view", "#container");
         }
         function loadEditor() {
-            htmx.ajax("GET", "/static/htmx/edit.html", "#container");
-            const textArea = document.querySelector("#note");
-            textArea.value = content;
+            htmx.ajax("GET", "{{ self_url }}?mode=edit", "#container");
         }
 
         function onInput(event) {

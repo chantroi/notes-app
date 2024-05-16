@@ -33,11 +33,18 @@ def home():
 @app.route("/<name>")
 def render_note(name):
     user_agent = request.headers.get("user-agent")
+    mode = request.args.get("mode")
     try:
         content = notes.get_note(name)
     except Exception as e:
         print(e)
         content = ""
+    if mode == "view":
+        if "<code>" not in content:
+            content = "<pre><code>" + content + "</code></pre>"
+        return render_template("htmx/view.html", content=content)
+    elif mode == "edit":
+        return render_template("htmx/edit.html", content=content)
     if "Mozilla" in user_agent:
         host = request.host
         url = "https://" + host + "/edit"
