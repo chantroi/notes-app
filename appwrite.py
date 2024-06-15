@@ -53,7 +53,7 @@ def main(ctx):
     elif mode == "edit":
         html = open("src/function/templates/htmx/edit.html", "r").read()
         html = html.replace("{{ content }}", content)
-        return ctx.rs.send(html, 200, {"content-type": "text/html"})
+        return ctx.res.send(html, 200, {"content-type": "text/html"})
     if "Mozilla" in user_agent:
         host = ctx.req.host
         post_url = "https://" + host + "/edit"
