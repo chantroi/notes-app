@@ -47,7 +47,7 @@ def main(ctx):
         if "<code>" not in content:
             content = "<pre><code>" + content + "</code></pre>"
         html = open("src/function/templates/htmx/view.html", "r").read()
-        html = html.replace("{{ content }}", content)
+        html = html.replace("{{ content | safe }}", content)
         return ctx.res.send(html, 200, {"content-type": "text/html"})
     elif mode == "edit":
         html = open("src/function/templates/htmx/edit.html", "r").read()
