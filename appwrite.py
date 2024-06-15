@@ -24,8 +24,8 @@ def extract_raw(input_string):
 def main(ctx):
     if ctx.req.method == "POST" and ctx.req.path == "/edit":
         data = ctx.req.body
-        name = data["name"]
-        content = data["content"]
+        name = data.name
+        content = data.content
         try:
             notes.add_note(name, content)
         except Exception as e:
