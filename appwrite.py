@@ -1,7 +1,6 @@
 import subprocess
+import os
 
 
 def main(ctx):
-    file = ctx.req.query.get("file")
-    with open(f"src/{file}", "r") as f:
-        return ctx.res.send(f.read(), 200, {"content-type": "text/plain"})
+    return ctx.res.json(os.listdir("src"))
