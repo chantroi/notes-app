@@ -38,6 +38,7 @@ def main(ctx):
 
     user_agent = ctx.req.headers.get("user-agent")
     mode = ctx.req.query.get("mode")
+    name = ctx.req.path.replace("/", "")
     try:
         content = notes.get_note(name)
     except Exception as e:
