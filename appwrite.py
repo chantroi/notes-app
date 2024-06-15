@@ -24,8 +24,8 @@ def extract_raw(input_string):
 def main(ctx):
     if ctx.req.method == "POST" and ctx.req.path == "/edit":
         data = ctx.req.body
-        name = data.get("name")
-        content = data.get("content")
+        name = data["name"]
+        content = data["content"]
         try:
             notes.add_note(name, content)
         except Exception as e:
@@ -63,6 +63,7 @@ def main(ctx):
             html.replace("{{ content }}", content)
             .replace("{{ post_url }}", post_url)
             .replace("{{ self_url }}", self_url)
+            .replace("{{ name }}", name)
         )
         return ctx.res.send(html, 200, {"content-type": "text/html"})
     else:
