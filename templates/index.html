@@ -17,10 +17,66 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css"
     />
-    <link rel="stylesheet" href="/static/style.css" />
     <script>
       hljs.highlightAll();
     </script>
+    <style>
+      code {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      .note {
+        width: 100%;
+        position: fixed;
+        bottom: 5px;
+        top: 5px;
+        left: 5px;
+        right: 3px;
+      }
+
+      .edit-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #f10000;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 60px;
+        cursor: pointer;
+        z-index: 1000;
+        text-decoration: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .view-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #000000;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 60px;
+        cursor: pointer;
+        z-index: 1000;
+        text-decoration: none;
+      }
+    </style>
     <title>{{ name }}</title>
   </head>
   <body onload="loadContent()">
