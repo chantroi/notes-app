@@ -10,14 +10,14 @@ class WorkersKV:
             api_key=os.environ["API_KEY"],
         )
 
-    def add(self, key: str, value: str | dict | list) -> None:
+    def add(self, key: str, value: str | dict | list):
         return self.kv.write({key: value})
 
-    def list(self) -> list:
+    def list(self):
         return self.kv.list_keys()
 
-    def get(self, key: str) -> str | dict | list:
+    def get(self, key: str):
         return self.kv.read(key)
 
-    def rm(self, key: str) -> None:
+    def rm(self, key: str):
         return self.kv.delete_one(key)
