@@ -1,6 +1,6 @@
 import re
 import names
-from .data import Note
+from .appwritedb import Note
 
 notes = Note()
 

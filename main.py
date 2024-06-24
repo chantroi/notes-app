@@ -1,11 +1,10 @@
-import json
 import re
 import names
 from flask import Flask, render_template, redirect, request, Response
-from data import Note
+from kv import WorkersKV
 
 app = Flask(__name__)
-notes = Note()
+notes = WorkersKV()
 
 
 def sanitize(input_string):
@@ -35,7 +34,7 @@ def render_note(name):
     user_agent = request.headers.get("user-agent")
     mode = request.args.get("mode")
     try:
-        content = notes.get_note(name)
+        content = notes.get(name)
     except Exception as e:
         print(e)
         content = ""
@@ -67,9 +66,5 @@ def post_edit():
     data = request.json
     name = data.get("name")
     content = data.get("content")
-    try:
-        notes.add_note(name, content)
-    except Exception as e:
-        print(e)
-        notes.update_note(name, content)
+    notes.add(name, content)
     return Response(content, content_type="text/plain")
