@@ -17,7 +17,8 @@ class WorkersKV:
         return self.kv.list_keys()
 
     def get(self, key: str):
-        return self.kv.read(key)
+        value = self.kv.read(key)
+        return value if value else ""
 
     def rm(self, key: str):
         return self.kv.delete_one(key)
