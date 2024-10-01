@@ -1,113 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <script
-      src="https://unpkg.com/htmx.org@1.9.12"
-      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
-      crossorigin="anonymous"
-    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css"
     />
-    <script>
-      hljs.highlightAll();
-    </script>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+    <title>Web Notes</title>
     <style>
-      code {
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-      }
-
-      .note {
-        width: 100%;
-        position: fixed;
-        bottom: 5px;
-        top: 5px;
-        left: 5px;
-        right: 3px;
-      }
-
-      .edit-button {
+      #dragButton {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: #f10000;
-        color: #fff;
-        border: none;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        text-align: center;
-        line-height: 60px;
-        cursor: pointer;
-        z-index: 1000;
-        text-decoration: none;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+        background-color: #2196f3;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: move;
         user-select: none;
-      }
-
-      .view-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #000000;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        text-align: center;
-        line-height: 60px;
-        cursor: pointer;
-        z-index: 1000;
-        text-decoration: none;
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+          0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
       }
     </style>
-    <title>{{ name }}</title>
   </head>
-  <body onload="loadContent()">
-    <div id="container"></div>
+  <body class="bg-gray-100">
+    <div id="content" class="w-full h-full p-4"></div>
+    <div id="editor" class="hidden w-full h-full p-4">
+      <textarea
+        class="w-full h-full p-2 border rounded"
+        id="note"
+        placeholder="Input..."
+        spellcheck="false"
+        autocomplete="off"
+        autofocus
+      ></textarea>
+    </div>
+    <div id="dragButton" class="material-icons">edit</div>
+
     <script>
-      const note = document.title;
+      hljs.highlightAll();
+
+      const path = window.location.pathname;
+      const content = document.getElementById("content");
+      const editor = document.getElementById("editor");
+      const textarea = document.getElementById("note");
+      const button = document.getElementById("dragButton");
+      let contentValue = "{{ content | safe }}";
+      let isViewMode = true;
+
+      function toggleMode() {
+        if (isViewMode) {
+          loadEditor();
+        } else {
+          loadContent();
+        }
+        isViewMode = !isViewMode;
+      }
+
+      function loadEditor() {
+        editor.className = "w-full h-full p-4";
+        content.className = "hidden";
+        textarea.value = contentValue;
+        button.innerHTML = "visibility";
+      }
 
       function loadContent() {
-        htmx.ajax("GET", "{{ self_url }}?mode=view", "#container");
+        editor.className = "hidden";
+        content.className = "w-full h-full p-4";
+        if (contentValue.includes("<code>")) {
+          content.innerHTML = contentValue;
+        } else {
+          content.innerHTML = `<pre><code class="language-plaintext">${escapeHtml(
+            contentValue
+          )}</code></pre>`;
+        }
+        hljs.highlightAll();
+        button.innerHTML = "edit";
       }
-      function loadEditor() {
-        htmx.ajax("GET", "{{ self_url }}?mode=edit", "#container");
+
+      function escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
       }
 
-      function onInput(event) {
-        const textinput = document.querySelector("#note");
-        const data = textinput.value;
+      async function onInput() {
+        contentValue = textarea.value;
+        try {
+          const response = await fetch(`${path}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain",
+            },
+            body: contentValue,
+          });
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+        } catch (error) {
+          console.error("Error saving content:", error);
+        }
+      }
 
-        const msg = {
-          name: note,
-          content: data,
-        };
+      document.addEventListener("DOMContentLoaded", () => {
+        loadContent();
+        textarea.addEventListener("input", onInput);
+        button.addEventListener("click", toggleMode);
+      });
 
-        fetch("{{ post_url }}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(msg),
-        })
-          .then((response) => response.text)
-          .then((data) => (content = data));
+      interact("#dragButton").draggable({
+        inertia: true,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: "parent",
+            endOnly: true,
+          }),
+        ],
+        autoScroll: true,
+        listeners: {
+          move: dragMoveListener,
+        },
+      });
+
+      function dragMoveListener(event) {
+        var target = event.target;
+        var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+        var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+        target.style.transform = "translate(" + x + "px, " + y + "px)";
+        target.setAttribute("data-x", x);
+        target.setAttribute("data-y", y);
       }
     </script>
   </body>

@@ -1,68 +1,46 @@
-import re
-import names
-from flask import Flask, render_template, redirect, request, Response
-from kv import WorkersKV
+from fastapi import FastAPI, Request, Response
+from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 
-app = Flask(__name__)
-notes = WorkersKV()
+from db import DB
+from util import extract_raw, generate_name
 
+db = DB()
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
-def sanitize(input_string):
-    sanitized_string = re.sub(r"[^a-zA-Z0-9_]", "", input_string)
-    sanitized_string = sanitized_string.lstrip("_")
-    return sanitized_string
-
-
-def extract_raw(input_string):
-    start_index = input_string.find("<code>")
-    end_index = input_string.find("</code>")
-    if start_index != -1 and end_index != -1:
-        content = input_string[start_index + len("<code>") : end_index]
-        return content
-    return None
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-@app.route("/")
-def home():
-    note_name = names.get_first_name(gender="female").lower()
-    return redirect("/{}".format(note_name))
+@app.get("/")
+def index():
+    path = generate_name()
+    return RedirectResponse(f"/{path}")
 
 
-@app.route("/<name>")
-def render_note(name):
-    user_agent = request.headers.get("user-agent")
-    mode = request.args.get("mode")
-    try:
-        content = notes.get(name)
-    except Exception as e:
-        print(e)
-        content = ""
-    if mode == "view":
-        if "<code>" not in content:
-            content = "<pre><code>" + content + "</code></pre>"
-        return render_template("htmx/view.html", content=content)
-    if mode == "edit":
-        return render_template("htmx/edit.html", content=content)
+@app.get("/{path}")
+def note_route(request: Request, path: str):
+    note = db.get(path)
+    headers = request.headers
+    user_agent = headers.get("User-Agent")
+    if note is None:
+        return Response(status_code=404)
     if "Mozilla" in user_agent:
-        host = request.host
-        post_url = "https://" + host + "/edit"
-        self_url = request.url
-        return render_template(
-            "index.html",
-            name=name,
-            content=content,
-            post_url=post_url,
-            self_url=self_url,
+        return templates.TemplateResponse(
+            "index.html", {"request": request, "content": note.content}
         )
-    if "<code>" in content and "</code>" in content:
-        content = extract_raw(content)
-    return Response(content, mimetype="text/plain")
+    return Response(extract_raw(note.content), status_code=200, media_type="text/plain")
 
 
-@app.route("/edit", methods=["POST"])
-def post_edit():
-    data = request.json
-    name = data.get("name")
-    content = data.get("content")
-    notes.add(name, content)
-    return Response(content, content_type="text/plain")
+@app.post("/{path}")
+def note_post(request: Request, path: str):
+    data = request.body()
+    db.add(path, data)
+    return Response(data, status_code=200, media_type="text/plain")
