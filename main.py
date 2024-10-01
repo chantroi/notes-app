@@ -31,12 +31,14 @@ def note_route(request: Request, path: str):
     headers = request.headers
     user_agent = headers.get("User-Agent")
     if note is None:
-        return Response(status_code=404)
+        content = ""
+    else:
+        content = note.content
     if "Mozilla" in user_agent:
         return templates.TemplateResponse(
-            "index.html", {"request": request, "content": note.content}
+            "index.html", {"request": request, "content": content}
         )
-    return Response(extract_raw(note.content), status_code=200, media_type="text/plain")
+    return Response(extract_raw(content), status_code=200, media_type="text/plain")
 
 
 @app.post("/{path}")
