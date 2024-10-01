@@ -39,10 +39,10 @@
     </style>
   </head>
   <body class="bg-gray-100">
-    <div id="content" class="w-full h-full p-4"></div>
+    <div id="content" class="w-full h-full"></div>
     <div id="editor" class="hidden w-full h-full p-4">
       <textarea
-        class="w-full h-full p-2 border rounded"
+        class="absolute h-full left-1 right-1 border rounded"
         id="note"
         placeholder="Input..."
         spellcheck="false"
@@ -82,7 +82,7 @@
       function loadContent() {
         editor.className = "hidden";
         content.className = "w-full h-full p-4";
-        if (contentValue.includes("<code>")) {
+        if (contentValue.includes("</")) {
           content.innerHTML = contentValue;
         } else {
           content.innerHTML = `<pre><code class="language-plaintext">${escapeHtml(
