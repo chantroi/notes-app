@@ -19,8 +19,7 @@ def extract_raw(input_string):
     if start_index != -1 and end_index != -1:
         content = input_string[start_index + len("<code>") : end_index]
         return content
-    else:
-        return None
+    return None
 
 
 @app.route("/")
@@ -42,7 +41,7 @@ def render_note(name):
         if "<code>" not in content:
             content = "<pre><code>" + content + "</code></pre>"
         return render_template("htmx/view.html", content=content)
-    elif mode == "edit":
+    if mode == "edit":
         return render_template("htmx/edit.html", content=content)
     if "Mozilla" in user_agent:
         host = request.host
@@ -55,10 +54,9 @@ def render_note(name):
             post_url=post_url,
             self_url=self_url,
         )
-    else:
-        if "<code>" in content and "</code>" in content:
-            content = extract_raw(content)
-        return Response(content, mimetype="text/plain")
+    if "<code>" in content and "</code>" in content:
+        content = extract_raw(content)
+    return Response(content, mimetype="text/plain")
 
 
 @app.route("/edit", methods=["POST"])
